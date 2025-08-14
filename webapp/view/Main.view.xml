@@ -1,0 +1,18 @@
+<mvc:View
+    controllerName="osmanager.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+>
+    <Page title="OSManager">
+        <content>
+            <Button
+                text="Clique aqui"
+                press=".onPress"
+            />
+            <Text
+                id="txtHello"
+                text="Bem-vindo ao OSManager!"
+            />
+        </content>
+    </Page>
+</mvc:View>
