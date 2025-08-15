@@ -2,23 +2,59 @@
     controllerName="osmanager.controller.Main"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
+    xmlns:f="sap.f"
 >
     <App>
         <pages>
-            <Page
-                id="mainPage"
-                title="{i18n>pageTitle}"
-            >
+            <Page id="mainPage">
+                <customHeader>
+                    <f:ShellBar
+                        title="OSManager"
+                        showSearch="true"
+                        showNotifications="true"
+                    >
+                        <f:menu>
+                            <Menu itemSelected=".onShellMenuSelect">
+                                <MenuItem
+                                    key="home"
+                                    text="Início"
+                                    icon="sap-icon://home"
+                                />
+                                <MenuItem
+                                    key="new"
+                                    text="Nova OS"
+                                    icon="sap-icon://add"
+                                />
+                                <MenuItem
+                                    key="settings"
+                                    text="Configurações"
+                                    icon="sap-icon://settings"
+                                />
+                            </Menu>
+                        </f:menu>
+                        <f:profile>
+                            <f:Avatar initials="OS" />
+                        </f:profile>
+                    </f:ShellBar>
+                </customHeader>
+
                 <content>
-                    <Button
-                        id="btnTest"
-                        text="Clique aqui"
-                        press=".onPress"
-                    />
-                    <Text
-                        id="txtHello"
-                        text="Bem-vindo ao OSManager!"
-                    />
+                    <HBox class="sapUiSmallMargin">
+                        <Image
+                            src="https://cdn-icons-png.flaticon.com/512/3022/3022338.png"
+                            width="50px"
+                            height="50px"
+                        />
+                        <VBox class="sapUiSmallMarginBegin">
+                            <Title
+                                text="Bem-vindo ao OSManager!"
+                                level="H1"
+                            />
+                            <Text
+                                text="Gerencie e acompanhe suas ordens de serviço com facilidade."
+                            />
+                        </VBox>
+                    </HBox>
                     <Table
                         id="ordersTable"
                         items="{ 
@@ -62,8 +98,14 @@
                                         state="{ path: 'status', formatter: '.formatStatusState' }"
                                         icon="{ path: 'status', formatter: '.formatStatusIcon' }"
                                     />
-                                    <Text text="{criadoEm}" />
-                                    <Text text="{prioridade}" />
+                                    <Text
+                                        text="{ path: 'criadoEm', formatter: '.formatDate' }"
+                                    />
+                                    <ObjectStatus
+                                        text="{prioridade}"
+                                        state="{ path: 'prioridade', formatter: '.formatPriorityState' }"
+                                        icon="{ path: 'prioridade', formatter: '.formatPriorityIcon' }"
+                                    />
                                 </cells>
                             </ColumnListItem>
                         </items>
