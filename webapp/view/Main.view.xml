@@ -1,13 +1,75 @@
-<mvc:View controllerName="osmanager.controller.Main" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
-  <App>
-    <pages>
-      <Page id="mainPage" title="{i18n>pageTitle}">
-        <content>
-          <Button id="btnTest" text="Clique aqui" press=".onPress" />
-          <Text id="txtHello" text="Bem-vindo ao OSManager!" />
-        </content>
-      </Page>
-    </pages>
-  </App>
-</mvc:View>
+<mvc:View
+    controllerName="osmanager.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+>
+    <App>
+        <pages>
+            <Page
+                id="mainPage"
+                title="{i18n>pageTitle}"
+            >
+                <content>
+                    <Button
+                        id="btnTest"
+                        text="Clique aqui"
+                        press=".onPress"
+                    />
+                    <Text
+                        id="txtHello"
+                        text="Bem-vindo ao OSManager!"
+                    />
+                    <Table
+                        id="ordersTable"
+                        items="{ 
+                        path: '/orders'}"
+                        inset="false"
+                    >
+                        <headerToolbar>
+                            <Toolbar>
+                                <Title
+                                    text="Lista de Ordens"
+                                    level="H2"
+                                />
+                            </Toolbar>
+                        </headerToolbar>
 
+                        <columns>
+                            <Column>
+                                <Text text="ID" />
+                            </Column>
+                            <Column>
+                                <Text text="Descrição" />
+                            </Column>
+                            <Column>
+                                <Text text="Status" />
+                            </Column>
+                            <Column>
+                                <Text text="Criado Em" />
+                            </Column>
+                            <Column>
+                                <Text text="Prioridade" />
+                            </Column>
+                        </columns>
+
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                    <Text text="{id}" />
+                                    <Text text="{descricao}" />
+                                    <ObjectStatus
+                                        text="{status}"
+                                        state="{ path: 'status', formatter: '.formatStatusState' }"
+                                        icon="{ path: 'status', formatter: '.formatStatusIcon' }"
+                                    />
+                                    <Text text="{criadoEm}" />
+                                    <Text text="{prioridade}" />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </content>
+            </Page>
+        </pages>
+    </App>
+</mvc:View>
