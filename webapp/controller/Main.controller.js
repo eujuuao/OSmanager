@@ -58,6 +58,12 @@ sap.ui.define([
         case "C": return "sap-icon://decline";
         default: return "";
       }
+    },
+
+    onShellMenuSelect: function (oEvent) {
+      var oIitem = oEvent.getParameter("item");
+      var sKey = oIitem.getKey();
+      sap.m.MessageToast.show("Menu: " + sKey);
     }
   });
 });

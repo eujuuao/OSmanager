@@ -1,0 +1,2 @@
+Para rodar o projeto: 
+npx ui5 serve --open /index.html
